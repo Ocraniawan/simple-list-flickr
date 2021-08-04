@@ -2,6 +2,7 @@ import { isEmpty } from 'lodash'
 import React, { useEffect, useState } from 'react'
 import './Home.css'
 import * as moment from 'moment'
+import flickrAPIs from '../../services/flickrAPIs'
 
 const dummyData = [
     {
@@ -76,7 +77,18 @@ export default function Home() {
 
     useEffect(() => {
         setData(dummyData)
+        getlistFlickr()
     }, [])
+
+    const getlistFlickr = () => {
+        flickrAPIs.getlistFlickr()
+            .then((res) => {
+                setData(res.data.items)
+            })
+            .catch((err) => {
+                alert(err.response.data.message)
+            })
+    }
 
     return (
         <div className="wrap-home">
@@ -88,12 +100,12 @@ export default function Home() {
                                 <img src={item.media.m} alt="img" />
                             </div>
                             <div className="wrap-content-card">
-                                <label className="title-card">{item.title}</label>
+                                <label className="title-card" style={{ visibility: isEmpty(item.title) ? 'hidden' : 'visible' }}>{item.title}</label>
                                 <label className="author-id">
                                     <a href={`https://www.flickr.com/people/${item.author_id}`} rel="noreferrer" target="_blank">Author ID : {item.author_id}</a>
                                 </label>
                                 <p className="date-taken">{moment(item.date_taken).format('LL')}</p>
-                                <button className="btn-tag"><label>{item.tags}</label></button>
+                                <button className="btn-tag" style={{ visibility: isEmpty(item.tags) ? 'hidden' : 'visible' }}><label>{item.tags}</label></button>
                             </div>
                         </div>
                     </div>
