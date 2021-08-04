@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './Home.css'
 import * as moment from 'moment'
 import flickrAPIs from '../../services/flickrAPIs'
+import { useLocation } from 'react-router'
 
 const dummyData = [
     {
@@ -72,13 +73,18 @@ const dummyData = [
     },
 ]
 
-export default function Home() {
+export default function Home(props) {
     const [data, setData] = useState(null)
+    let location = useLocation()
 
     useEffect(() => {
-        setData(dummyData)
-        getlistFlickr()
-    }, [])
+        if (!isEmpty(location.state)) {
+            getlistFlickrByTag(location.state.id)
+        } else {
+            setData(dummyData)
+            getlistFlickr()
+        }
+    }, [location.state])
 
     const getlistFlickr = () => {
         flickrAPIs.getlistFlickr()
@@ -89,6 +95,18 @@ export default function Home() {
                 alert(err.response.data.message)
             })
     }
+
+    const getlistFlickrByTag = (tag) => {
+        flickrAPIs.getlistFlickrByTag(tag)
+            .then((res) => {
+                setData(res.data.items)
+            })
+            .catch((err) => {
+                alert(err.response.data.message)
+            })
+    }
+
+
 
     return (
         <div className="wrap-home">

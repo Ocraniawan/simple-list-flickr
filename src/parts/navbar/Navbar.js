@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Navbar.css'
 import * as ImIcons from 'react-icons/im'
+import { useHistory } from 'react-router'
 
 
 export default function Navbar() {
     const [search, setSearch] = useState('')
+    const history = useHistory()
 
     const handleSearch = (e) => {
         e.preventDefault();
-        alert(search)
-        setSearch('')
+        history.push({
+            pathname: `/`,
+            state: {
+                id: search
+            }
+        })
     }
 
     const handleChange = (e) => {
