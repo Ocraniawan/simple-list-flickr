@@ -1,6 +1,10 @@
 .wrap-home{
     padding: 50px;
-    margin: 50px;
+    margin: 50px 50px 0px;
+}
+
+.wrap-inside-home{
+    padding-bottom: 50px;
 }
 
 
@@ -85,7 +89,7 @@
 }
 
 .wrap-content-card{
-    background-color: #DFF8FE ;
+    background-color: #FDF8E8;
     border-radius: 0px 0px 10px 10px;
     padding: 20px;
     font-family: inter;
@@ -113,8 +117,8 @@
 }
 
 .btn-tag{
-    background-color: #82CDE5 ;
-    border: 1px solid #82CDE5;
+    background-color: #DD84A1  ;
+    border: 1px solid #DD84A1 ;
     width: 70%;
     color: white;
     padding: 8px 5px;
@@ -134,7 +138,7 @@
 
 .btn-tag:hover, .btn-tag>label:hover{
     cursor: pointer;
-    background-color: #003458;
+    background-color: #FFBBBE ;
 }
 
 .author-id{
@@ -149,4 +153,9 @@
 .author-id:hover{
     cursor: pointer;
     color: #003458;
+}
+
+.author-id>a{
+    color: #003458;
+    text-decoration: none;
 }
