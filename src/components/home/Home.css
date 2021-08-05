@@ -160,3 +160,26 @@
     color: #003458;
     text-decoration: none;
 }
+
+
+.load-more-btn{
+    text-align: center;
+    margin: 20px 10px 50px;
+}
+
+.load-more-btn>button{
+    padding: 5px 35px;
+    border: 1px solid #DD84A1;
+    background-color: transparent;
+    border-radius: 15px;
+    color: #DD84A1;
+    outline: none;
+}
+
+.load-more-btn>button:hover{
+    padding: 5px 35px;
+    border: 1px solid #DD84A1;
+    background-color: #DD84A1;
+    border-radius: 15px;
+    color: white;
+}
