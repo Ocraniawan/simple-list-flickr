@@ -32,6 +32,7 @@ export default function Navbar() {
                         <form autoComplete="off" onSubmit={handleSearch}>
                             <div className="navbar-search">
                                 <input
+                                    title="search"
                                     style={{ color: 'black' }}
                                     onChange={handleChange}
                                     placeholder="Search Tags Here !"
